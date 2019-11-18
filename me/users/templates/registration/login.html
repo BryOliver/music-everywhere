@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,15 +16,11 @@
     <form method="post" class="form-log">
         {% csrf_token %}
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" placeholder="Digite seu E-mail...">
-        </div>
-        <div class="form-group">  
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" id="senha" placeholder="Digite sua senha...">
+            {{ form }}
         </div>
         
         <input class="form-control" type="submit" value="Entrar">
+        <p>Não possui uma conta? <a href="{% url 'register' %}">Inscreva-se aqui!</a></p>
     </form>
 </body>
 </html>

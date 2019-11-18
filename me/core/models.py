@@ -9,7 +9,7 @@ class Music(models.Model):
     date = models.DateField('Data de publicação')
     arq = models.FileField('Arquivo da música')
 
-    def __str__():
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -17,4 +17,14 @@ class Music(models.Model):
         verbose_name_plural = 'Músicas'
 
 class Playlist(models.Model):
-    pass 
+    slug = models.SlugField('Link', max_length=200)
+    #musics = models.ManyToManyField(Music)
+    name = models.CharField('Nome', max_length=200)
+    blog = models.ForeignKey(Music, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Playlist'
+        verbose_name_plural = 'Playlists'
