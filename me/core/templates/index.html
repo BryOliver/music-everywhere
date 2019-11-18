@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,8 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ME!</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+    <section id="header">
+        <br><br>
+    </section>
     
+    <section id="playlist">
+        <h1>Minhas Playlists</h1>
+        <hr>
+        <table style="width:100%">
+            <tr>
+                <th>Nome</th>
+                <th>Autor</th>
+                <th>Data de criação</th>
+            </tr>
+            <!-- COLOCAR FOR AQUI -->
+            <tr>
+                <td><a href="">Só sucessos</a></td>
+                <td>Vinícius</td>
+                <td>16/11/2019</td>
+            </tr>
+            <!-- ENCERRAR AQUI -->
+        </table>
+    </section>
 </body>
 </html>

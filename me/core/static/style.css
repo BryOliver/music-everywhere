@@ -37,3 +37,42 @@ body{
     padding: 15px;
     transition: 0.5s;
 }
+#header{
+    margin-top: 0;
+    background: black;
+}
+.cabecalho{
+    background: black;
+}
+#playlist{
+    margin-top: 300px;
+}
+#playlist h1{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+#playlist hr{
+    margin-left: 15px;
+    margin-top: -15px;
+    width: 20%;
+    border: black solid 0.3px;
+}
+#playlist table{
+    border: 0px; 
+    border-spacing: 10px; 
+    border-collapse: separate;
+}
+#playlist table td{
+    border-left: 1px solid black; 
+    text-align: left; 
+    padding: 5px; 
+    margin: 5px
+}
+#playlist table th{
+    border-left: 1px solid black; 
+    text-align: left; 
+    padding: 5px; 
+    margin: 5px
+}
