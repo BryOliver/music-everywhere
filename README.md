@@ -13,5 +13,6 @@ Recomendo a criação de um ambiente virtual para instalar as dependencias corre
 # URLS do projeto
 - localhost: página principal
 - localhost/login: página de login
+- localhost/registro: página de registro para novo usuário
 - localhost/admin: área de administração do site (usuário: admin; senha: poo@2019)
 
