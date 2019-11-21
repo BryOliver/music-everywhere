@@ -27,18 +27,23 @@ class Album(models.Model):
 
 class Music(models.Model):
     title = models.CharField('Título', max_length = 200)
-    singer = models.ForeignKey(
-        Singer,
-        on_delete=models.CASCADE, 
-        related_name='Autor'
-    )
     album = models.ForeignKey(
         Album,
         on_delete=models.CASCADE,
-        related_name='Album'
+        related_name='music_album'
+    )
+    singer = models.ForeignKey(
+        Singer,
+        models.CASCADE,
+        null=True
     )
     date = models.DateField('Data de publicação')
     arq = models.FileField('Arquivo da música', blank=True, upload_to='arquivos/musicas')
+
+    # def save(self, force_update=False, force_insert=False):
+    #     singer_album = Singer.objects.filter()
+    #     self.singer = singer_album
+    #     super(Singer, self).save(force_insert, force_update)
 
     def __str__(self):
         return self.title
@@ -55,7 +60,7 @@ class Playlist(models.Model):
         User,
         on_delete=models.CASCADE,
         null=True,
-        related_name='Criado'
+        related_name='Criador'
     )
     criacao = models.DateField('Data de criação', auto_now_add=True)
     modificacao = models.DateField('Atualizado em', auto_now=True)
