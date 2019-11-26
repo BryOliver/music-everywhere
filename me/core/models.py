@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_currentuser.db.models import CurrentUserField
 
 # Create your models here.
 class Singer(models.Model):
@@ -16,7 +17,8 @@ class Album(models.Model):
     singer = models.ForeignKey(
         Singer,
         on_delete=models.CASCADE,
-        related_name='Autor'
+        related_name='Autor',
+        verbose_name='Artista'
     )
     def __str__(self):
         return self.title
@@ -37,6 +39,7 @@ class Music(models.Model):
         models.CASCADE,
         null=True,
         blank=True,
+        verbose_name='Artista'
     )
     date = models.DateField('Data de publicação')
     arq = models.FileField('Arquivo da música', blank=True, upload_to='arquivos/musicas')
@@ -57,19 +60,10 @@ class Music(models.Model):
 class Playlist(models.Model):
     name = models.CharField('Nome', max_length=200)
     slug = models.SlugField('Link', max_length=200)
-    music = models.ManyToManyField(Music)
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        null=True,
-        related_name='Criador'
-    )
+    music = models.ManyToManyField(Music, verbose_name='Lista de Músicas')
+    user = CurrentUserField(verbose_name='Criador')
     criacao = models.DateField('Data de criação', auto_now_add=True)
     modificacao = models.DateField('Atualizado em', auto_now=True)
-
-    def save_model(self, request, obj, form, change):
-        obj.user = request.user
-        super().save_model(request, obj, form, change)
 
     def __str__(self):
         return self.name
