@@ -5,8 +5,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
+    
     return render(request, 'index.html')
 
+@login_required
 def playlist(request, slug):
     playlist = get_object_or_404(Playlist, slug=slug)
     context = {
