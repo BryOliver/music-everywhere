@@ -1,78 +1,120 @@
 body{
-    padding: 0px;
-    margin: 0px;
+    background-color:black;
+    color: #555555;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:  bold;
+    line-height: 1.6em
 }
-.form-log{
-    font-family: sans-serif;
-    margin: 10%;
-    font-size: 20px;
-    padding: 100px;
-    background: #cacaca;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
+.button{
+    background-color: #4555DB;
+    color:#fff;
+    text-transform: uppercase;
+    border-radius: 500px;
+    touch-action: manipulation;
+    cursor: pointer;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
 }
-.form-log div{
-    margin-bottom: 15px;
+
+.frase{
+    color: white;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%;
 }
-.form-log input{
-    width: 100%;
-    background: #cacaca;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-color: black;
+
+.botao-login :hover{
+    background-color: #6429AD;
+    transition-duration: .9s;
 }
-.form-log input:focus{
-    box-shadow: none;
-    color: #000;
+
+.botao-register :hover{
+    background-color: #616467;
+    transition-duration: .9s;
+    color: white;
 }
-.form-log  input[type="submit"] {
-    font-size: 20px;
-    border-radius: 37px;
-    background: rgb(110, 64, 195);
-    color: #F5F8FC;
-    outline: 0 !important;
-    height: auto !important;
-    margin-top: 25px;
-    /* margin-left: 20%; */
-    padding: 15px;
-    transition: 0.5s;
+
+.botao-register input{
+    background-color:#fff;
+    color: black;
+    text-transform: uppercase;
+    border-radius: 500px;
+    touch-action: manipulation;
+    cursor: pointer;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+
 }
-#header{
-    margin-top: 0;
-    background: black;
+
+
+.botoes input{
+    border: 2px red solid;
+    text-align: center;
+
 }
-.cabecalho{
-    background: black;
+
+.botoes{
+    display:flex;
+    width: 466px;
 }
-#playlist{
-    margin-top: 300px;
+
+
+
+.inicio{
+    background-color:black ;
+    border: 5px green solid
 }
-#playlist h1{
-    margin-bottom: 20px;
-    margin-left: 10px;
-    font-size: 30px;
-    font-weight: bold;
+
+
+
+.my-form .form-group{
+    padding-bottom: 5px;
+    color: black;  
+   
 }
-#playlist hr{
-    margin-left: 15px;
-    margin-top: -15px;
-    width: 20%;
-    border: black solid 0.3px;
+
+.title h2{
+    font-family: inherit;
+    text-align: center;
+    font-size: 16px;
+    color:black;
 }
-#playlist table{
-    border: 0px; 
-    border-spacing: 10px; 
-    border-collapse: separate;
+
+
+.my-form input{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+    margin-bottom: 0.5em;
+    width: 96%;
+    border: 1px #DFE0E6 solid;
+
 }
-#playlist table td{
-    border-left: 1px solid black; 
-    text-align: left; 
-    padding: 5px; 
-    margin: 5px
+
+.container-login{
+    border-radius: 20px;
+    background-color: #EFEFEA;
+    padding: 10px;
+    width:800px;
+    margin: auto;
+    max-width: 450px;
+
 }
-#playlist table th{
-    border-left: 1px solid black; 
-    text-align: left; 
-    padding: 5px; 
-    margin: 5px
+
+.image img{
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    
 }
+
