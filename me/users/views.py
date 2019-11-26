@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from core.views import index
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -18,3 +18,8 @@ def register(request):
         'form': form,
     }
     return render(request, 'cadastro.html', context)
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('login'))

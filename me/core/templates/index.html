@@ -26,14 +26,14 @@
                 <th>Data de criação</th>
                 <th>Atualizado em:</th>
             </tr>
-            <!-- COLOCAR FOR AQUI -->
-            <tr>
-                <td><a href="">Só sucessos</a></td>
-                <td>Vinícius</td>
-                <td>16/11/2019</td>
-                <td>18/11/2019</td>
-            </tr>
-            <!-- ENCERRAR AQUI -->
+            {% for playlist in playlist %}
+                <tr>
+                    <td><a href="{{ playlist.get_absolute_url }}">{{ playlist.name }}</a></td>
+                    <td>{{ playlist.user }}</td>
+                    <td>{{ playlist.criacao }}</td>
+                    <td>{{ playlist.modificacao }}</td>
+                </tr>
+            {% endfor %}
         </table>
     </section>
 </body>
