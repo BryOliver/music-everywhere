@@ -68,6 +68,10 @@ class Playlist(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('playlist', args=[self.slug])
+
     class Meta:
         verbose_name = 'Playlist'
         verbose_name_plural = 'Playlists'
