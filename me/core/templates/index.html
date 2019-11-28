@@ -12,7 +12,7 @@
         </div>
 
         <div class = "container1">
-            <h1> Seja bem vindo {{ request.user.username }}</h1>
+            <h1> Seja bem vindo <strong>{{ request.user.username }}</strong></h1>
             <h2> Aproveite todas as músicas disponíveis para você!</h2>
         </div>
 
@@ -32,8 +32,8 @@
                             <tr>
                                 <td ><a href="{{ playlist.get_absolute_url }}">{{ playlist.name }}</a></td>
                                 <td>{{ playlist.user }}</td>
-                                <td>{{ playlist.criacao }}</td>
-                                <td>{{ playlist.modificacao }}</td>
+                                <td>{{ playlist.creation }}</td>
+                                <td>{{ playlist.modification }}</td>
                             </tr>
                         {% endfor %}
                     {% else %}

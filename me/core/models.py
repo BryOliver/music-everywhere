@@ -3,8 +3,14 @@ from django.contrib.auth.models import User
 from django_currentuser.db.models import CurrentUserField
 
 # Create your models here.
-class Singer(models.Model):
+class Artist(models.Model):
     name = models.CharField('Nome do Artista', max_length=250)
+    biography = models.TextField('Biografia')
+    image = models.ImageField(
+        verbose_name='Imagem do artista', 
+        upload_to='arquivos/imagens/artistas'
+    )
+    
     def __str__(self):
         return self.name
 
@@ -14,12 +20,17 @@ class Singer(models.Model):
         
 class Album(models.Model):
     title = models.CharField('Nome do Album', max_length=250)
-    singer = models.ForeignKey(
-        Singer,
-        on_delete=models.CASCADE,
-        related_name='Autor',
-        verbose_name='Artista'
+    image = models.ImageField(
+        verbose_name='Imagem do album',
+        upload_to='arquivos/imagens/album',
+        null=True
     )
+    author = models.ManyToManyField(
+        Artist,
+        verbose_name='Artistas'
+    )
+    release = models.DateField('Data de publicação', null=True)
+
     def __str__(self):
         return self.title
 
@@ -29,26 +40,26 @@ class Album(models.Model):
 
 class Music(models.Model):
     title = models.CharField('Título', max_length = 200)
+    artist = models.ManyToManyField(
+        Artist,
+        related_name='artist',
+        verbose_name='Artista'
+    )
     album = models.ForeignKey(
         Album,
         on_delete=models.CASCADE,
-        related_name='music_album'
+        related_name='music_album',
+        verbose_name='Album'
     )
-    singer = models.ForeignKey(
-        Singer,
-        models.CASCADE,
-        null=True,
-        blank=True,
-        verbose_name='Artista'
-    )
+    duration = models.DurationField('Duração da Música', null=True)
     date = models.DateField('Data de publicação')
-    arq = models.FileField('Arquivo da música', blank=True, upload_to='arquivos/musicas')
+    file = models.FileField('Arquivo da música', blank=True, upload_to='arquivos/musicas')
 
-    def save(self, force_update=False, force_insert=False):
-        alb = self.album
-        singer_album = Album.objects.get(title = alb)
-        self.singer = singer_album.singer
-        super().save(force_insert, force_update)
+    # def save(self, force_update=False, force_insert=False):
+    #     alb = self.album
+    #     singer_album = Album.objects.get(title = alb)
+    #     self.singer = singer_album.singer
+    #     super().save(force_insert, force_update)
 
     def __str__(self):
         return self.title
@@ -61,9 +72,20 @@ class Playlist(models.Model):
     name = models.CharField('Nome', max_length=200)
     slug = models.SlugField('Atalho', max_length=200)
     music = models.ManyToManyField(Music, verbose_name='Lista de Músicas')
-    user = CurrentUserField(verbose_name='Criador')
-    criacao = models.DateField('Data de criação', auto_now_add=True)
-    modificacao = models.DateField('Atualizado em', auto_now=True)
+    contributors = models.ManyToManyField(User, verbose_name='Colaboradores', related_name='colaboradores', null=True, blank=True)
+    image = models.ImageField(
+        verbose_name='Imagem da playlist',
+        upload_to='arquivos/imagens/playlist',
+        null=True
+    )
+    user = CurrentUserField(verbose_name='Criador', related_name='user')
+    creation = models.DateField('Data de criação', auto_now_add=True)
+    modification = models.DateField('Atualizado em', auto_now=True)
+    image = models.ImageField(
+        verbose_name='Imagem da playlist',
+        upload_to='arquivos/imagens/playlist',
+        null=True
+    )
 
     def __str__(self):
         return self.name

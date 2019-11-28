@@ -14,9 +14,14 @@ def index(request):
 @login_required
 def playlist(request, slug):
     playlist = get_object_or_404(Playlist, slug=slug)
-    music = playlist.music.all()
+    musics = playlist.music.all()
+    value = 0
+    for music in musics:
+        value = value+1
+
     context = {
         'playlist' : playlist,
-        'music' : music
+        'musics' : musics,
+        'value' : value,
     }
     return render(request, 'playlist.html', context)

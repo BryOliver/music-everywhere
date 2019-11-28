@@ -13,19 +13,35 @@
         <div class = "container2">
             <section id="playlist">
                 <h1>{{ playlist.name }}</h1>
+                <h3>Criada por: {{ playlist.user }}</h3>
+                <h3> 
+                    {{ value }} músicas
+                </h3>
                 <table style="width:100%">
                     <tr>
                         <th>Nome</th>
-                        <th>Banda/Cantor</th>
+                        <th>Artistas</th>
                         <th>Album</th>
+                        <th>Duração</th>
+                        <th>Data de lançamento</th>
                         <th>Baixe aqui</th>
                     </tr>
-                    {% for music in music %}
+                    {% for music in musics %}
                             <tr>
                                 <td>{{ music.title }}</a></td>
-                                <td>{{ music.singer }}</td>
+                                <td>
+                                    {% for artist in music.artist.all %}
+                                        {% if forloop.last %}
+                                            {{ artist }}
+                                        {% else %}
+                                            {{ artist }},
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
                                 <td>{{ music.album }}</td>
-                            <td style="background-color: black; color: white; border-radius: 20px" class="button" type="submit"><a href='{{ music.arq }}' download>Baixar</a></td>
+                                <td>{{ music.duration }}</td>
+                                <td>{{ music.date }}</td>
+                            <td style="background-color: black; color: white; border-radius: 20px" class="button" type="submit"><a href='{{ music.file }}' download>Baixar</a></td>
                         </tr>
                     {% endfor %}
                 </table>
