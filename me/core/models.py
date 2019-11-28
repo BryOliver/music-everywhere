@@ -59,7 +59,7 @@ class Music(models.Model):
 
 class Playlist(models.Model):
     name = models.CharField('Nome', max_length=200)
-    slug = models.SlugField('Link', max_length=200)
+    slug = models.SlugField('Atalho', max_length=200)
     music = models.ManyToManyField(Music, verbose_name='Lista de Músicas')
     user = CurrentUserField(verbose_name='Criador')
     criacao = models.DateField('Data de criação', auto_now_add=True)

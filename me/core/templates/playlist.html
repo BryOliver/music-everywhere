@@ -1,15 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-    {% for music in music %}
-    <p>{{ music.title }}</p>
-    {% endfor %}
-</body>
+<html>
+    <head>
+        <title>ME! - Playlist</title>
+        <link rel="stylesheet" href="{% static 'cssindex.css' %}">
+    </head>
+    <body>
+        <div class="top-menu">
+            <a href="{% url 'index' %}"><h3 class="button" type="submit">Inicio</h3></a>
+            <a href="{% url 'logout' %}"><h3 class="button" type="submit">Sair</h3></a>
+        </div>
+        <div class = "container2">
+            <section id="playlist">
+                <h1>{{ playlist.name }}</h1>
+                <table style="width:100%">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Banda/Cantor</th>
+                        <th>Album</th>
+                        <th>Baixe aqui</th>
+                    </tr>
+                    {% for music in music %}
+                            <tr>
+                                <td>{{ music.title }}</a></td>
+                                <td>{{ music.singer }}</td>
+                                <td>{{ music.album }}</td>
+                            <td style="background-color: black; color: white; border-radius: 20px" class="button" type="submit"><a href='{{ music.arq }}' download>Baixar</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </section>
+        </div>
+    </body>    
 </html>
