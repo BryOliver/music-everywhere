@@ -55,12 +55,6 @@ class Music(models.Model):
     date = models.DateField('Data de publicação')
     file = models.FileField('Arquivo da música', blank=True, upload_to='arquivos/musicas')
 
-    # def save(self, force_update=False, force_insert=False):
-    #     alb = self.album
-    #     singer_album = Album.objects.get(title = alb)
-    #     self.singer = singer_album.singer
-    #     super().save(force_insert, force_update)
-
     def __str__(self):
         return self.title
 

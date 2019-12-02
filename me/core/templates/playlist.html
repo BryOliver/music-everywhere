@@ -41,7 +41,7 @@
                                 <td>{{ music.album }}</td>
                                 <td>{{ music.duration }}</td>
                                 <td>{{ music.date }}</td>
-                            <td style="background-color: black; color: white; border-radius: 20px" class="button" type="submit"><a href='{{ music.file }}' download>Baixar</a></td>
+                            <td style="background-color: black; color: white; border-radius: 20px" class="button"><a download href="{{ music.file.url }}"> Baixar </a></td>
                         </tr>
                     {% endfor %}
                 </table>
