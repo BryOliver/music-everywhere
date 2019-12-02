@@ -16,5 +16,9 @@ Recomendo a criação de um ambiente virtual para instalar as dependencias corre
 - localhost: página principal
 - localhost/login: página de login
 - localhost/registro: página de registro para novo usuário
+- localhost/artistas: mostra uma lista com todos os artistas cadastrados no sistema
 - localhost/admin: área de administração do site (usuário: admin; senha: poo@2019)
 - localhost/playlist/nome-da-playlist: página contendo as músicas da playlist
+- localhost/artista/nome-do-artista: mostra a página do artista, contendo suas informações e seus albuns
+- localhost/album/nome-do-album: mostra página com album e suas músicas
+

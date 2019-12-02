@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ME! - Artistas</title>
+        <link rel="stylesheet" href="{% static 'cssindex.css' %}">
+    </head>
+    <body>
+        <div class="top-menu">
+            <a href="{% url 'index' %}"><h3 class="button" type="submit">Inicio</h3></a>
+            <a href="{% url 'list_artist' %}"><h3 class="button" type="submit">Artistas</h3></a>
+            <a href="{% url 'logout' %}"><h3 class="button" type="submit">Sair</h3></a>
+        </div>
+        <div>
+            <section id="playlist">
+                <ul>
+                    {% for artist in artist %}
+                        <li><a href="{{ artist.get_absolute_url }}">{{ artist.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </body>    
+</html>

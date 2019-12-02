@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ME! - Playlist</title>
+        <title>ME! - {{ album.title }}</title>
         <link rel="stylesheet" href="{% static 'cssindex.css' %}">
     </head>
     <body>
@@ -13,9 +13,17 @@
         </div>
         <div class = "container2">
             <section id="playlist">
-                <h1>{{ playlist.name }}</h1>
-                <h3>Criada por: {{ playlist.user }}</h3>
-                <h3> 
+                <h1>{{ album.title }}</h1>
+                <h3>Artistas: 
+                    {% for author in album.author.all %}
+                        {% if forloop.last %}
+                            {{ author }}
+                        {% else %}
+                            {{ author }},
+                        {% endif %}
+                    {% endfor %}
+                </h3>
+                <h3>
                     {{ value }} músicas
                 </h3>
                 <table style="width:100%">

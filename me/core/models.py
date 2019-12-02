@@ -5,12 +5,17 @@ from django_currentuser.db.models import CurrentUserField
 # Create your models here.
 class Artist(models.Model):
     name = models.CharField('Nome do Artista', max_length=250)
+    slug = models.SlugField('Atalho', max_length=200)
     biography = models.TextField('Biografia')
     image = models.ImageField(
         verbose_name='Imagem do artista', 
         upload_to='arquivos/imagens/artistas'
     )
     
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('artist', args=[self.slug])
+
     def __str__(self):
         return self.name
 
@@ -20,6 +25,7 @@ class Artist(models.Model):
         
 class Album(models.Model):
     title = models.CharField('Nome do Album', max_length=250)
+    slug = models.SlugField('Atalho', max_length=200)
     image = models.ImageField(
         verbose_name='Imagem do album',
         upload_to='arquivos/imagens/album',
@@ -30,6 +36,10 @@ class Album(models.Model):
         verbose_name='Artistas'
     )
     release = models.DateField('Data de publicação', null=True)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('album', args=[self.slug])
 
     def __str__(self):
         return self.title

@@ -13,9 +13,14 @@ class PlaylistAdmin(admin.ModelAdmin):
     search_fields = ['name', 'user__username']
     prepopulated_fields = {'slug' : ('name',)}
 
+class ArtistAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+class AlbumAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Music, MusicAdmin)
 admin.site.register(Playlist, PlaylistAdmin)
-admin.site.register(Album)
-admin.site.register(Artist)
+admin.site.register(Album, AlbumAdmin)
+admin.site.register(Artist, ArtistAdmin)
 

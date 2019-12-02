@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ME! - {{ artist.name }}</title>
+        <link rel="stylesheet" href="{% static 'cssindex.css' %}">
+    </head>
+    <body>
+        <div class="top-menu">
+            <a href="{% url 'index' %}"><h3 class="button" type="submit">Inicio</h3></a>
+            <a href="{% url 'list_artist' %}"><h3 class="button" type="submit">Artistas</h3></a>
+            <a href="{% url 'logout' %}"><h3 class="button" type="submit">Sair</h3></a>
+        </div>
+
+        <div class = "container1">
+            <img src="{{ artist.image.url }}" alt="imagem do artista {{ artist.name }}">
+            <h1>{{ artist.name }}</h1>
+            <p>{{ artist.biography|linebreaks }}</p>
+        </div>
+
+        <div class = "container2">
+            <section id="playlist">
+                <hr>
+                <h1>Albuns</h1>
+                <table style="width:100%">
+                    {% if album %}
+                        {% for album in album %}
+                            <td><a href="{{ album.get_absolute_url }}"><img src="{{ album.image.url }}" alt="imagem do album {{ album.title }}"></a></td>
+                            <td><a href="{{ album.get_absolute_url }}">{{ album.title }}</a></td>
+                        {% endfor %}
+                    {% else %}
+                        <h2>Sinto muito, mas o artista ainda não possui album cadastrado em nosso sistema!</h2>
+                        <a href="{% url 'admin:index' %}"><h3>Resolva isso clicando aqui!</h3></a>
+                    {% endif %}
+                </table>
+            </section>
+        </div>
+    </body>
+</html>

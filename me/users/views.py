@@ -7,11 +7,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .forms import RegisterForm
 
 def register(request):
+    context = {}
+
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-        return HttpResponseRedirect(reverse('index'))
+            context['is_valid'] = True
+            try:
+                form.save()
+                return HttpResponseRedirect(reverse('index'))
+            except:
+                return HttpResponseRedirect(reverse('register'))
     else:
         form = RegisterForm()
     

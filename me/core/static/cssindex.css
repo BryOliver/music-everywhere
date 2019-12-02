@@ -56,3 +56,9 @@ body{
     touch-action: manipulation;
     cursor: pointer;
 }
+
+table td img{
+    width: 200px;
+    height: 200px;
+    margin-left: 0px;
+}
