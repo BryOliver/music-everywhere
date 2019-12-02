@@ -4,6 +4,8 @@
     <head>
         <title>ME! - Registro</title>
         <link rel="stylesheet" href="{% static 'style.css' %}">
+        <!--Acessa a ásta de arquivos estáticos do sistema e busca pelo arquivo com o nome especificado-->
+
     </head>
     <body>
         <div class="image">
@@ -20,20 +22,24 @@
 
            <form class = "my-form" method="post">
                 {% csrf_token %}
+                <!--Campos do formulário padrão do Django passado ao HTML por meio do controlador de Login-->
                 <div class= "form-group">
                     {{ form.username.label }}
                     {{ form.username }}
                     {{ form.username.errors }}
+                    <!--Mensagem de erro caso o campo não tenha sido preenchido de forma correta-->
                 </div>
                 <div class= "form-group">
                     {{ form.password1.label }}
                     {{ form.password1 }}
                     {{ form.password1.errors }}
+                    <!--Mensagem de erro caso o campo não tenha sido preenchido de forma correta-->
                 </div>                
                 <div class= "form-group">
                     {{ form.password2.label }}
                     {{ form.password2 }}
                     {{ form.password2.errors }} 
+                    <!--Mensagem de erro caso o campo não tenha sido preenchido de forma correta-->
                 </div>
                 <div class='botao-login'>
                     <input class="button" type="submit" value="Registrar">

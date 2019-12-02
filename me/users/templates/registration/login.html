@@ -1,9 +1,10 @@
-{% load static %}
+{% load static %}<!--Carrega a função stica, que serve para conectar o HTML a pasta de arquivos estáticos do sistema-->
 <!DOCTYPE html> 
 <html>
     <head>
         <title>ME! - Login</title>
-        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'style.css' %}"> 
+        <!--Acessa a ásta de arquivos estáticos do sistema e busca pelo arquivo com o nome especificado-->
     </head>
     <body>
         <div class="image">
@@ -19,9 +20,9 @@
             </div>
 
            <form class = "my-form" method="post">
-                {% csrf_token %}
+                 {% csrf_token %} <!-- Token padrão de segurança do Django -->
                 <div class="form-group">
-                    {{ form }}
+                    {{ form }} <!--Formulário padrão do Django passado ao HTML por meio do controlador de Login-->
                 </div>
                 <div class='botao-login'>
                     <input class="button" type="submit" value="Entrar">
@@ -31,6 +32,7 @@
                 </div>
                 <div class="botao-register">
                     <a href="{% url 'register' %}"><input type="button" value="Registre-se"></a>
+                    <!--Tornamos dinamicas as URL's do sistema, fazendo qualquer requisição chamando diretamente a views que cuida disso-->
                 </div>
             </form>
         </div>

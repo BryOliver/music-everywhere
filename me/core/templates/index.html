@@ -1,19 +1,23 @@
 {% load static %}
+<!--Carrega a função stica, que serve para conectar o HTML a pasta de arquivos estáticos do sistema-->
 <!DOCTYPE html>
 <html>
     <head>
         <title>ME!</title>
         <link rel="stylesheet" href="{% static 'cssindex.css' %}">
+        <!--Acessa a ásta de arquivos estáticos do sistema e busca pelo arquivo com o nome especificado-->
     </head>
     <body>
         <div class="top-menu">
             <a href="{% url 'index' %}"><h3 class="button" type="submit">Inicio</h3></a>
             <a href="{% url 'list_artist' %}"><h3 class="button" type="submit">Artistas</h3></a>
             <a href="{% url 'logout' %}"><h3 class="button" type="submit">Sair</h3></a>
+            <!--Tornamos dinamicas as URL's do sistema, fazendo qualquer requisição chamando diretamente a views que cuida disso-->
         </div>
 
         <div class = "container1">
             <h1> Seja bem vindo <strong>{{ request.user.username }}</strong></h1>
+            <!--Foma de chamar uma variável no HTML {{ nome da variável }}-->
             <h2> Aproveite todas as músicas disponíveis para você!</h2>
         </div>
 
@@ -22,7 +26,8 @@
                 <hr>
                 <h1>Suas Playlists</h1>
                 <table style="width:100%">
-                    {% if playlist %}
+                    {% if playlist %} 
+                    <!--Condicional para verificar se o objeto playlist não esta vazio-->
                         <tr>
                             <th>Nome</th>
                             <th>Autor</th>
@@ -30,8 +35,10 @@
                             <th>Atualizado em:</th>
                         </tr>
                         {% for playlist in playlist %}
+                        <!--Laço que repete o trecho de código para cada playlist contida no nosso objeto-->
                             <tr>
                                 <td ><a href="{{ playlist.get_absolute_url }}">{{ playlist.name }}</a></td>
+                                <!--Um link direto para a página específica da playlist-->
                                 <td>{{ playlist.user }}</td>
                                 <td>{{ playlist.creation }}</td>
                                 <td>{{ playlist.modification }}</td>

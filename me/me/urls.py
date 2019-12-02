@@ -20,6 +20,8 @@ from users import views as users_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+'''Arquivos de URL da aplicação Me, a principal do sistema. Esse arquivo cuida de direcionar qual controlador deve responder as requisições feitas pelos
+    usuário do sistema.'''
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
@@ -27,5 +29,8 @@ urlpatterns = [
     path('registro/',users_views.register, name = 'register'),
 ]
 
+'''O django trabalha com arquivos de mídia, mas para que eles possam ser acessados dentro de nossas páginas HTML é necessário dizar para o 
+    arquivo urls.py onde essas mídias podem ser encontradas, utilizando as variáveis globais MEDIA_URL e MEDIA_ROOT, definidas no arquivo de configuração 
+    do projeto: settings.py'''
 if settings.DEBUG:
 	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
